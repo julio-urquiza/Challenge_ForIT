@@ -28,9 +28,7 @@ class TaskService {
     create = async (body) => {
         try {
             const {title, description} = body
-            if (!title || !description) {
-                throw new CustomError(400, 'Title and description are required')
-            }
+            if (!title || !description) throw new CustomError(400, 'Title and description are required')
             return await this.dao.create(body)
         } catch (error) {
             throw error
@@ -39,9 +37,9 @@ class TaskService {
 
     update = async (id, body) => {
         try {
-            const {title, description} = body
-            if (!title || !description) {
-                throw new CustomError(400, 'Title and description are required')
+            const {title, description, completed} = body
+            if (!title || !description || !(typeof completed === 'boolean')) {
+                throw new CustomError(400, 'Title, description and completed are required')
             }
             if (!await this.dao.exists(id)) {
                 throw new CustomError(404, 'Task not found')

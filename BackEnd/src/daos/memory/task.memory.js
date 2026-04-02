@@ -42,9 +42,9 @@ class TaskMemory {
 }
 
 const tasks = [
-    new Task(Date.now().toString(), 'Task 1', 'Description 1'),
-    new Task(Date.now().toString(), 'Task 2', 'Description 2'),
-    new Task(Date.now().toString(), 'Task 3', 'Description 3'),
-    new Task(Date.now().toString(), 'Task 4', 'Description 4')
+    new Task("1", 'Task 1', 'Description 1'),
+    new Task("2", 'Task 2', 'Description 2'),
+    new Task("3", 'Task 3', 'Description 3'),
+    new Task("4", 'Task 4', 'Description 4')
 ]
 export default new TaskMemory(tasks)
