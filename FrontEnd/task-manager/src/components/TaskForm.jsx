@@ -1,46 +1,45 @@
 import { useState } from 'react'
-import { useContext } from "react"
-import { RefreshContext } from '../context/RefreshContext.jsx'
+import useTasks from "../hooks/useTask.jsx"
 
 function TaskForm() {
+    const { createTask } = useTasks()
+
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const { toggleRefresh } = useContext(RefreshContext)
 
-    const handleSubmit = async (e) => {
+    const handleSubmit2 = async (e) => {
         e.preventDefault()
         if (title.trim() === "" || description.trim() === "") return;
-
-        try {
-            const res = await fetch("http://localhost:8080/api/tasks", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ title: title, description: description })
-            })
-
-            if (res.ok) {
-                toggleRefresh()   
-            }
-            const data = await res.json()
-            console.log("Respuesta:", data)
-        } catch (error) {
-            console.error(error)
-        }
-    };
+        await createTask({ title, description })
+    }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form
+            onSubmit={handleSubmit2}
+            className="max-w-md mx-auto p-6 bg-white rounded-2xl shadow-md flex flex-col gap-4"
+        >
+            <h2 className="text-xl font-semibold text-gray-800">Nueva tarea</h2>
+
             <input
+                className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                placeholder="Título"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
             />
+
             <input
+                className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                placeholder="Descripción"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
             />
-            <button type="submit">Enviar</button>
+
+            <button
+                type="submit"
+                className="bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 active:scale-95 transition"
+            >
+                Enviar
+            </button>
         </form>
     );
 }

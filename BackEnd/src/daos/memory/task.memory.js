@@ -42,9 +42,15 @@ class TaskMemory {
 }
 
 const tasks = [
-    new Task("1", 'Task 1', 'Description 1'),
-    new Task("2", 'Task 2', 'Description 2'),
-    new Task("3", 'Task 3', 'Description 3'),
-    new Task("4", 'Task 4', 'Description 4')
-]
+    new Task("1", "Comprar comida", "Ir al supermercado y comprar lo necesario para la semana"),
+    new Task("2", "Estudiar React", "Repasar hooks, useEffect y manejo de estado global",true),
+    new Task("3", "Entrenar", "Hacer rutina de pecho y tríceps en el gimnasio"),
+    new Task("4", "Leer", "Leer 30 páginas de un libro de programación"),
+    new Task("5", "Proyecto backend", "Avanzar con la API de gestión de tareas",true),
+    new Task("6", "Limpiar casa", "Ordenar habitación y limpiar el escritorio"),
+    new Task("7", "Practicar JavaScript", "Resolver ejercicios de arrays y objetos"),
+    new Task("8", "Revisar emails", "Responder correos pendientes del trabajo",true),
+    new Task("9", "Salir a correr", "Correr al menos 5km en el parque"),
+    new Task("10", "Planificar semana", "Organizar objetivos y tareas de la próxima semana",true)
+];
 export default new TaskMemory(tasks)

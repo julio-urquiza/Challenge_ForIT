@@ -1,24 +1,20 @@
-import useFetch from "../hooks/useFetch.js"
 import TaskItem from "./TaskItem.jsx"
-import { useContext } from "react"
-import { RefreshContext } from '../context/RefreshContext.jsx'
-
+import useTasks from "../hooks/useTask.jsx"
 
 function TaskList() {
-    const { refresh } = useContext(RefreshContext)
-    const { data, loading, error } = useFetch("http://localhost:8080/api/tasks", refresh)
-
+    const { tasks, loading, error } = useTasks()
     if (loading) return <p>Cargando tareas...</p>
     if (error) return <p>Error: {error}</p>
 
     return (
-        <div>
-            <h2>Tareas</h2>
-            <ul>
-                {data.map((task) => (
+        <section>
+            <h2 className="text-center text-3xl font-bold text-gray-800">Tareas</h2>
+            <div className="flex flex-wrap justify-center gap-4 mt-6">
+                {tasks?.map((task) => (
                     <TaskItem key={task.id} task={task} />
                 ))}
-            </ul>
-        </div>)
+            </div>
+        </section>
+    )
 }
 export default TaskList;
