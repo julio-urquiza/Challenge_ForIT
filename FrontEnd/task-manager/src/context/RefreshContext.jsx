@@ -13,5 +13,5 @@ export function RefreshProvider({ children }) {
     <RefreshContext.Provider value={{ refresh, toggleRefresh }}>
       {children}
     </RefreshContext.Provider>
-  );
+  )
 }

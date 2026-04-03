@@ -17,4 +17,4 @@ function TaskList() {
         </section>
     )
 }
-export default TaskList;
+export default TaskList

@@ -6,7 +6,7 @@ function useTasks() {
     const [tasks, setTasks] = useState(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
-    const url = "http://localhost:8080/api/tasks"
+    const url = import.meta.env.VITE_API_URL
 
     const getTasks = async () => {
         const res = await fetch(url)
@@ -56,4 +56,4 @@ function useTasks() {
 
     return { tasks, loading, error, createTask, updateTask, deleteTask }
 }
-export default useTasks;
+export default useTasks

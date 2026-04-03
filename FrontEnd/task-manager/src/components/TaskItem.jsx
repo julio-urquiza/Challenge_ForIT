@@ -35,9 +35,9 @@ function TaskItem({ task }) {
             <div className="flex flex-row justify-between gap-2 mt-2 w-full">
                 <button
                     onClick={handleChangeStatus}
-                    className={`bg-blue-600 p-3 rounded-2xl hover:bg-blue-700 active:scale-95 transition text-sm ${task.completed
-                            ? "bg-red-600 hover:bg-red-700"
-                            : "bg-green-600 hover:bg-green-700"
+                    className={`opacity-50  p-3 rounded-2xl active:scale-95 transition text-sm ${task.completed
+                            ? "bg-gray-600 hover:bg-red-600"
+                            : "bg-gray-600 hover:bg-green-600"
                         }`}
                 >
                     {task.completed 
@@ -53,6 +53,6 @@ function TaskItem({ task }) {
                 </button>
             </div>
         </article>
-    );
+    )
 }
-export default TaskItem;
+export default TaskItem

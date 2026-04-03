@@ -4,12 +4,12 @@ import useTasks from "../hooks/useTask.jsx"
 function TaskForm() {
     const { createTask } = useTasks()
 
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
+    const [title, setTitle] = useState("")
+    const [description, setDescription] = useState("")
 
     const handleSubmit2 = async (e) => {
         e.preventDefault()
-        if (title.trim() === "" || description.trim() === "") return;
+        if (title.trim() === "" || description.trim() === "") return
         await createTask({ title, description })
     }
 
